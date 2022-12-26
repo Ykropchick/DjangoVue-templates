@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block html %}
+
+
+<html lang="en">
+<head>
+    {% block head %}
+        {{ block.super }}
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+    {{ block.super }}
+    <div id="app">
+
+    </div>
+    {% csrf_token %}
+{% endblock body %}
+</body>
+</html>
+
+{% endblock html %}
