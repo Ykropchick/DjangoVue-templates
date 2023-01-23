@@ -36,12 +36,14 @@ ___
           'rest_framework.permissions.IsAuthenticated',
       )
   }
+  ```
 * root/urls.py:
   ```python
     urlpatterns = [
     path('api/v1/', include('djoser.urls')),
     path('api/v1/', include('djoser.urls.authtoken')),
   ]
+  ```
 
 --- 
 ### Dependencies:
@@ -51,7 +53,10 @@ ___
 
 ---
 ### Vue Project:
-
+* main.js
+  ```vue
+  axios.defaults.baseURL = 'http://127.0.0.1:8001'
+  ```
 
 ---
 ### Additional Info
