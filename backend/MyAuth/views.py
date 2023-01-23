@@ -1,13 +1,16 @@
 from django.shortcuts import render
+from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
-from django.contrib.auth.models import User
+from .models import Test
 from .serializers import *
 
 
 from rest_framework import viewsets
 
 
-class UserViewSet(viewsets.ModelViewSet):
-    serializer_class = UserSerializer
-    queryset = User.objects.all()
+class TestViewSet(viewsets.ModelViewSet):
+    queryset = Test.objects.all()
+    serializer_class = TestSerializer
 

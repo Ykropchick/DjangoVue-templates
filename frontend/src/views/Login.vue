@@ -1,9 +1,12 @@
 <template>
-  <form @submit.prevent="submitForm">
-    <input type="text" placeholder="username" v-model="username">
-    <input type="text" placeholder="password" v-model="password">
-    <button type="submit">LogIn</button>
-  </form>
+  <div class="form">
+    <form @submit.prevent="submitForm">
+      <input class="form__input" type="text" placeholder="username" v-model="username">
+      <input class="form__input" type="text" placeholder="password" v-model="password">
+      <button class="form__btn" type="submit">LogIn</button>
+    </form>
+  </div>
+
 </template>
 
 <script>
@@ -32,13 +35,17 @@ export default {
           this.$store.commit('setToken', token)
           axios.defaults.headers.common['Authorization'] = 'Token ' + token
           localStorage.setItem('token', token)
-          console.log(token)
       })
     },
   },
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+  .form{
+    display: inline-block;
+  }
+  .form__input, .form__btn{
+    display: inline-block;
+  }
 </style>
