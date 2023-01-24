@@ -1,9 +1,9 @@
 <template>
-  <form @click.prevent="checkButton">
-    <input class="form__input" type="email" placeholder="email" v-model="email">
+  <form >
+    <input class="form__input" type="text" placeholder="phone" v-model="phone">
     <input class="form__input" type="text" placeholder="username" v-model="username">
     <input class="form__input" type="text" placeholder="password" v-model="password">
-    <button class="form__btn" type="submit">LogIn</button>
+    <button class="form__btn" @click.prevent="checkButton">SignIn</button>
   </form>
 
 </template>
@@ -17,7 +17,7 @@ export default {
     return {
       username: '',
       password: '',
-      email: '',
+      phone: '',
     }
   },
   methods:{
@@ -25,15 +25,16 @@ export default {
       const data = {
         username: this.username,
         password: this.password,
-        email: this.email,
+        phone: this.phone,
       }
       await axios
           .post('/api/v1/users/', data)
           .then(response => {
             console.log(response.data)
           })
-
-
+          .catch( error =>{
+            console.log(error)
+          })
     }
   }
 }

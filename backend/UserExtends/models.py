@@ -61,14 +61,16 @@ def upload_to(instance, filename):
 
 class User(AbstractBaseUser):
     username = models.CharField(max_length=30, unique=True, verbose_name="Имя пользователя")
+    time_registrate = models.DateField(auto_now_add=True, blank=True, null=True, verbose_name="Дата регистрации")
     phone = models.CharField(max_length=20, unique=True, verbose_name="телефон")
     avatar = models.ImageField(upload_to=upload_to, blank=True, null=True, verbose_name="Аватар")
-    time_registrate = models.DateField(auto_now_add=True, verbose_name="Дата регистрации")
     approved = models.BooleanField(default=False, verbose_name="верифицирован")
     banned = models.BooleanField(default=False, verbose_name="забанен")
-    is_active = models.BooleanField(default=True)
-    staff = models.BooleanField(default=False)  # a admin user; non super-user
-    admin = models.BooleanField(default=False)  # a superuser
+    staff = models.BooleanField(default=False, verbose_name="сотрудник")  # a admin user; non super-user
+    admin = models.BooleanField(default=False, verbose_name="админ")  # a superuser
+
+    last_login = None
+
 
 
     # notice the absence of a "Password field", that is built in.

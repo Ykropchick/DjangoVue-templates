@@ -9,17 +9,16 @@ class UserAdmin(BaseUserAdmin):
     form = UserAdminChangeForm
     add_form = UserAdminCreationForm
 
-    list_display = ['phone', 'username', 'avatar', "time_registrate", "approved", "banned", 'admin']
-    list_filter = ['admin', "time_registrate", "approved", "banned"]
+    list_display = ['phone', 'username', 'avatar', "approved", "banned", 'admin']
+    list_filter = ['admin', "approved", "banned"]
     fieldsets = (
         (None, {'fields': ('phone', 'password',)}),
-        ('Personal info', {'fields': ("username", "avatar", )}),
+        ('Personal info', {'fields': ("username", "avatar",)}),
         ('Permissions', {'fields': ("approved", "banned", 'admin',)}),
     )
     add_fieldsets = (
         (None, {
-            'classes': ('wide',),
-            'fields': ('phone', 'password', 'username', 'avatar', "time_registrate", "approved", "banned", 'admin')}
+            'fields': ('password', 'password2', 'username', 'phone', 'avatar', 'approved', 'banned', 'staff', 'admin',)}
         ),
     )
     search_fields = ['phone']
@@ -27,4 +26,4 @@ class UserAdmin(BaseUserAdmin):
     filter_horizontal = ()
 
 
-admin.site.register(User, UserAdmin)
+admin.site.register(User)

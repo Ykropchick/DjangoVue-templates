@@ -4,6 +4,7 @@ export default createStore({
   state: {
     isAuthenticated: false,
     token: '',
+    serverUrl: 'http://127.0.0.1:8001/',
   },
   getters: {
   },

@@ -1,7 +1,7 @@
 <template>
   <div class="form">
     <form @submit.prevent="submitForm">
-      <input class="form__input" type="text" placeholder="username" v-model="username">
+      <input class="form__input" type="text" placeholder="phone" v-model="phone">
       <input class="form__input" type="text" placeholder="password" v-model="password">
       <button class="form__btn" type="submit">LogIn</button>
     </form>
@@ -15,15 +15,15 @@ export default {
   name: "Login",
   data(){
     return{
-      username: '',
+      phone: '',
       password: '',
     }
   },
   methods: {
     async submitForm(){
       const data = {
-        username: this.username,
-        password: this.password
+        phone: this.phone,
+        password: this.password,
       }
 
   axios.defaults.headers.common['Authorization'] = ''
@@ -36,6 +36,9 @@ export default {
           axios.defaults.headers.common['Authorization'] = 'Token ' + token
           localStorage.setItem('token', token)
       })
+      .catch(error => {
+          console.log(error)
+        })
     },
   },
 }
