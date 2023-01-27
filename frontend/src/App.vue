@@ -9,6 +9,9 @@
 <script>
   import axios from "axios";
   import NavBar from "@/components/NavBar.vue";
+  import gql from 'graphql-tag'
+  import {useQuery, useResult} from "@vue/apollo-composable";
+  import {computed, watchEffect} from "vue";
 
   export default {
     name: 'App',
@@ -21,6 +24,22 @@
         axios.defaults.headers.common['Authorization'] = ""
       }
     },
+    async created(){
+      const ALL_USERS_QUERY = gql`
+        query {
+          users{
+            id
+            admin
+           }
+        }
+      `
+      const { result } = useQuery(ALL_USERS_QUERY)
+      const users = computed( () => result.value?.users ?? [] )
+      watchEffect(() => {
+        console.log(users.value)
+      })
+    },
+
   }
 </script>
 

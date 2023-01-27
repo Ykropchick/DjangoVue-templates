@@ -42,9 +42,11 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'djoser',
+    'graphene_django',
     
     'MyAuth.apps.MyauthConfig',
-    'UserExtends.apps.UserextendsConfig'
+    'UserExtends.apps.UserextendsConfig',
+    'GraphQL.apps.GraphqlConfig',
 
 ]
 
@@ -156,6 +158,13 @@ REST_FRAMEWORK = {
 }
 
 # User Extend
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'mediafiles')
 AUTH_USER_MODEL = 'UserExtends.User'
+
+#GraphQL
+
+GRAPHENE = {
+  "SCHEMA": "GraphQL.schema.schema",
+}
