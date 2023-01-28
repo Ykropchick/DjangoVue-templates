@@ -7,6 +7,12 @@
 <script>
 export default {
   name: "LeafletMap",
+  props:{
+    zoom:'',
+    center:'',
+    markers:[],
+
+  },
   setup() {
     let map
     let marker
@@ -20,9 +26,11 @@ export default {
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map)
-        marker = L.marker([51.5, -0.09]).addTo(map)
-        marker2 = L.marker([51.51, -0.09]).addTo(map)
+        marker = L.marker([51.5, -0.09])
         marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+        marker.addTo(map)
+        marker2 = L.marker([51.51, -0.09]).addTo(map)
+
         marker2.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
       }
     }
