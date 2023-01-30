@@ -28,9 +28,9 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
-# Application definition
-
 INSTALLED_APPS = [
+    'daphne',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,12 +43,17 @@ INSTALLED_APPS = [
     'corsheaders',
     'djoser',
     'graphene_django',
-    
+
+
+
     'MyAuth.apps.MyauthConfig',
     'UserExtends.apps.UserextendsConfig',
     'GraphQL.apps.GraphqlConfig',
+    'chat.apps.ChatConfig'
 
 ]
+# Application definition
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -168,3 +173,6 @@ AUTH_USER_MODEL = 'UserExtends.User'
 GRAPHENE = {
   "SCHEMA": "GraphQL.schema.schema",
 }
+
+#Chat
+ASGI_APPLICATION = "backend.asgi.application"
