@@ -1,19 +1,29 @@
 # frontend
+___
+## Map
+#### Component:
+* src/components/LeafletMap
 
-## Project setup
-```
-npm install
-```
+#### Dependencies:  
+* ``npm install leaflet``
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+#### Settings:
+* main/js  
+``import'leaflet/dist/leaflet.css'
+import L from 'leaflet' ``
 
-### Compiles and minifies for production
-```
-npm run build
-```
+#### Additional Info
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+___
+## Captcha
+#### Component:
+* src/views/Captcha
+
+#### Dependencies:  
+* ``npm install vue-recaptcha``
+
+Settings: 
+* ``import {VueRecaptcha} from "vue-recaptcha";`` in component
+#### Additional Info
+Take the Api key for recaptcha v2 in [Google](https://developers.google.com/)
+___

@@ -32,7 +32,7 @@ ___
 * Django
     * graphene_django 
 * Vue
-* npm install --save @apollo/client @vue/apollo-composable @vue/apollo-util graphql graphql-tag
+  * npm install --save @apollo/client @vue/apollo-composable @vue/apollo-util graphql graphql-tag
   
 
 
