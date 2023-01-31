@@ -43,21 +43,21 @@ export default {
 
     async checkButton(){
       console.log(this.captcha)
-      // if (this.captcha){
-      //   const data = {
-      //   username: this.username,
-      //   password: this.password,
-      //   phone: this.phone,
-      // }
-      // await axios
-      //     .post('/api/v1/users/', data)
-      //     .then(response => {
-      //       console.log(response.data)
-      //     })
-      //     .catch( error =>{
-      //       console.log(error)
-      //     })
-      // }
+      if (this.captcha){
+        const data = {
+        username: this.username,
+        password: this.password,
+        phone: this.phone,
+      }
+      await axios
+          .post('/api/v1/users/', data)
+          .then(response => {
+            console.log(response.data)
+          })
+          .catch( error =>{
+            console.log(error)
+          })
+      }
     }
   }
 }

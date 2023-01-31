@@ -3,6 +3,7 @@ import Login from "@/views/Login.vue";
 import SignIn from "@/views/SignIn.vue";
 import Logout from "@/views/Logout.vue";
 import Map from "@/views/Map.vue";
+import Chat from "@/views/Chat.vue";
 
 
 const routes = [
@@ -25,6 +26,11 @@ const routes = [
     path: '/map',
     name: 'map',
     component: Map
+  },
+  {
+    path: '/chat',
+    name: 'chat',
+    component: Chat
   },
 ]
 
