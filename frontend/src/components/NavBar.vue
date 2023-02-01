@@ -51,7 +51,6 @@ export default {
           .then(response =>{
             this.ditail = response.data
           })
-      console.log(this.ditail)
     }
   }
 }

@@ -26,19 +26,21 @@ export default {
         password: this.password,
       }
 
-  axios.defaults.headers.common['Authorization'] = ''
-  localStorage.removeItem('token')
-  await axios
-      .post('/api/v1/token/login/', data)
-      .then(response => {
-          const token = response.data.auth_token
-          this.$store.commit('setToken', token)
-          axios.defaults.headers.common['Authorization'] = 'Token ' + token
-          localStorage.setItem('token', token)
-      })
-      .catch(error => {
-          console.log(error)
+    axios.defaults.headers.common['Authorization'] = ''
+    localStorage.removeItem('token')
+    localStorage.removeItem('phone')
+    await axios
+        .post('/api/v1/token/login/', data)
+        .then(response => {
+            const token = response.data.auth_token
+            this.$store.commit('setToken', token)
+            axios.defaults.headers.common['Authorization'] = 'Token ' + token
+            localStorage.setItem('token', token)
+            localStorage.setItem('phone', this.phone)
         })
+        .catch(error => {
+            console.log(error)
+          })
     },
   },
 }

@@ -10,7 +10,6 @@ import {ApolloClient, createHttpLink, from, InMemoryCache} from '@apollo/client/
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 
-
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
 
