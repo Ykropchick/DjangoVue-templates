@@ -4,6 +4,7 @@ import SignIn from "@/views/SignIn.vue";
 import Logout from "@/views/Logout.vue";
 import Map from "@/views/Map.vue";
 import Chat from "@/views/Chat.vue";
+import TestModalWindow from "@/views/TestModalWindow.vue";
 
 
 const routes = [
@@ -31,6 +32,11 @@ const routes = [
     path: '/chat/:name',
     name: 'chat',
     component: Chat
+  },
+  {
+    path: '/test_modal_window',
+    name: 'chat',
+    component: TestModalWindow
   },
 ]
 

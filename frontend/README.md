@@ -27,3 +27,15 @@ Settings:
 #### Additional Info
 Take the Api key for recaptcha v2 in [Google](https://developers.google.com/)
 ___
+## ModalWindow
+#### Component:
+* src/components/ModalWindow
+
+#### Dependencies:  
+* 
+
+Settings: 
+* ``import ModalWindow from "@/components/ModalWindow.vue";`` in component
+#### Additional Info
+Must give a props. It must be an object. 
+___

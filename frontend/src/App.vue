@@ -12,10 +12,11 @@
   import gql from 'graphql-tag'
   import {useQuery, useResult} from "@vue/apollo-composable";
   import {computed, watchEffect} from "vue";
+  import ModalWindow from "@/components/ModalWindow.vue";
 
   export default {
     name: 'App',
-    components: {NavBar},
+    components: {ModalWindow, NavBar},
     beforeCreate() {
       this.$store.commit('initializeStore')
       if (this.$store.state.token) {
@@ -25,19 +26,19 @@
       }
     },
     async created(){
-      const ALL_USERS_QUERY = gql`
-        query {
-          users{
-            id
-            admin
-           }
-        }
-      `
-      const { result } = useQuery(ALL_USERS_QUERY)
-      const users = computed( () => result.value?.users ?? [] )
-      watchEffect(() => {
-        console.log(users.value)
-      })
+      // const ALL_USERS_QUERY = gql`
+      //   query {
+      //     users{
+      //       id
+      //       admin
+      //      }
+      //   }
+      // `
+      // const { result } = useQuery(ALL_USERS_QUERY)
+      // const users = computed( () => result.value?.users ?? [] )
+      // watchEffect(() => {
+      //   console.log(users.value)
+      // })
     },
 
   }
@@ -49,4 +50,5 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 </style>
