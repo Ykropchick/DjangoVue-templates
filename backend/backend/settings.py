@@ -26,7 +26,11 @@ SECRET_KEY = 'django-insecure-*%l#6%49@23*jb%$bpxufri7uw0@tnbrbdrfpof^6ruhswpq)e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    '.vercel.app',
+    'http://127.0.0.1:8001',
+    'http://localhost:8080'
+]
 
 
 INSTALLED_APPS = [
@@ -151,6 +155,7 @@ CORS_ALLOW_HEADERS = "*"
 CORS_ORIGIN_WHITELIST = [
     'http://127.0.0.1:8001',
     'http://localhost:8080',
+    '.vercel.app',
 ]
 
 
@@ -177,11 +182,12 @@ GRAPHENE = {
 
 #Chat
 ASGI_APPLICATION = "backend.asgi.application"
+
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("127.0.0.1", 6379)],
+            "hosts": ["redis://default:YqExuJHYUjXjRbmkWOmCa2ceg6c8jsgI@redis-10566.c135.eu-central-1-1.ec2.cloud.redislabs.com:10566"],
         },
     },
 }
