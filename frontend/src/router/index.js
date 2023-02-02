@@ -35,7 +35,7 @@ const routes = [
   },
   {
     path: '/test_modal_window',
-    name: 'chat',
+    name: 'test_modal_window',
     component: TestModalWindow
   },
 ]

@@ -9,14 +9,26 @@
 
 <script>
 import ModalWindow from "@/components/ModalWindow.vue";
+import axios from "axios";
 
 export default {
   name: "TestModalWindow",
   components: {ModalWindow},
   data(){
     return{
-      show: true,
+      show: false,
     }
+  },
+  async mounted() {
+    const data = {
+      'room_name': 12,
+    }
+    console.log()
+    await axios
+        .get("/api/v1/chat/messages/12/")
+        .then(response => {
+          console.log(response.data)
+        })
   }
 }
 </script>

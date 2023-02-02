@@ -13,7 +13,7 @@
     <form>
       <div class="row">
         <div class="input-group mb-3">
-          <input type="text" v-model="my_message" class="form-control">
+          <input type="text" maxlength="500" v-model="my_message" class="form-control">
           <button @click.prevent="sendMessage" class="btn btn-outline-secondary">Send</button>
         </div>
       </div>
@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "Chat",
   data(){
@@ -34,15 +36,9 @@ export default {
       messages: [],
     }
   },
-  mounted() {
-    this.connection = new WebSocket(`ws://127.0.0.1:8001/ws/chat/${this.room_name}/`)
-    this.connection.onopen = (event) =>{
-      console.log("connected")
-    }
-    this.connection.onmessage = (event) => {
-      const message = JSON.parse(event.data)
-      this.messages.push(message)
-    }
+  async mounted() {
+    await this.takeMessageHistory()
+    this.connectWebSocket(`ws://127.0.0.1:8001/ws/chat/${this.room_name}/`)
   },
   methods:{
     sendMessage(){
@@ -51,7 +47,36 @@ export default {
         "message": this.my_message,
       }))
       this.my_message = ''
-    }
+    },
+    async takeMessageHistory(){
+      await axios
+          .get(`/api/v1/chat/messages/${this.room_name}/`)
+          .then(response => {
+            response.data.forEach(({user, text}) => {
+              this.messages.push({
+                    "user" : user.phone,
+                    "message": text,
+                  }
+              )
+            })
+          })
+
+    },
+    connectWebSocket(url){
+      this.connection = new WebSocket(url)
+      this.connection.onopen = (event) =>{
+        console.log("connected")
+        this.connection.send(JSON.stringify({
+          type: "Init",
+          username: this.$store.state.phone
+        }))
+      }
+      this.connection.onmessage = (event) => {
+        const message = JSON.parse(event.data)
+        this.messages.push(message)
+      }
+    },
+
   },
   computed: {
     room_name(){
