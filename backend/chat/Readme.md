@@ -55,6 +55,7 @@ ___
 ### Additional Info
 Docs: https://channels.readthedocs.io/en/stable/tutorial/part_2.html
 
-Must download redis: ``docker pull redis`` and start it  `` docker run -p 6379:6379 -d redis``
+Must download redis: ``docker pull redis`` and start it  `` docker run -p 6379:6379 -d redis``  
+The diagram of db: https://drawsql.app/teams/krabiki/diagrams/chat
 
 

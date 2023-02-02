@@ -37,5 +37,5 @@ ___
 Settings: 
 * ``import ModalWindow from "@/components/ModalWindow.vue";`` in component
 #### Additional Info
-Must give a props. It must be an object. 
+Must give a props show, that answers for vision of modal window. It must be an object. 
 ___
