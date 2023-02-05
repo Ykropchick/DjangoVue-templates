@@ -164,6 +164,7 @@ CORS_ALLOW_HEADERS = "*"
 CORS_ORIGIN_WHITELIST = [
     'http://127.0.0.1:8001',
     'http://localhost:8080',
+    'https://django-vue-templates.vercel.app'
 ]
 
 

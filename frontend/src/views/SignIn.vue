@@ -1,16 +1,14 @@
 <template>
-  <form >
-    <input class="form__input" type="text" placeholder="phone" v-model="phone">
-    <input class="form__input" type="text" placeholder="username" v-model="username">
-    <input class="form__input" type="text" placeholder="password" v-model="password">
-    <VueRecaptcha
-      :sitekey="sitekey"
-      :load-recaptcha-script="true"
-      @verify="handleSuccess"
-      @error="handleError"
-    ></VueRecaptcha>
-    <button class="form__btn" @click.prevent="checkButton">SignIn</button>
-  </form>
+  <input class="form__input" type="text" placeholder="phone" v-model="phone">
+  <input class="form__input" type="text" placeholder="username" v-model="username">
+  <input class="form__input" type="text" placeholder="password" v-model="password">
+  <VueRecaptcha
+    :sitekey="sitekey"
+    :load-recaptcha-script="true"
+    @verify="handleSuccess"
+    @error="handleError"
+  ></VueRecaptcha>
+  <button class="form__btn" @click.prevent="checkButton">SignIn</button>
 
 </template>
 
@@ -38,17 +36,15 @@ export default {
       this.captcha = true
     },
     handleError(){
-      console.log()
     },
 
     async checkButton(){
-      console.log(this.captcha)
-      if (this.captcha){
         const data = {
         username: this.username,
         password: this.password,
         phone: this.phone,
       }
+      console.log(data)
       await axios
           .post('/api/v1/users/', data)
           .then(response => {
@@ -57,7 +53,6 @@ export default {
           .catch( error =>{
             console.log(error)
           })
-      }
     }
   }
 }
