@@ -5,7 +5,7 @@ export default createStore({
     isAuthenticated: false,
     token: '',
     phone: '',
-    serverUrl: 'http://127.0.0.1:8001',
+    serverUrl: 'https://backend-beta-ruddy.vercel.app',
   },
   getters: {
   },
