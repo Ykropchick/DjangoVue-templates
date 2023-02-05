@@ -19,7 +19,7 @@ import "bootstrap"
 // GraphQL
 const cache = new InMemoryCache()
 const httpLink = createHttpLink({
-    uri: 'http://127.0.0.1:8001/graphql/'
+    uri: 'https://backend-ykropchick.vercel.app/graphql/'
     }
 )
 
@@ -37,7 +37,7 @@ const app = createApp({
 
 
 // Auth
-axios.defaults.baseURL = 'http://127.0.0.1:8001'
+axios.defaults.baseURL = 'https://backend-ykropchick.vercel.app'
 
 
 app.use(store).use(router).mount('#app')

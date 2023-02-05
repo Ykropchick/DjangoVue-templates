@@ -28,8 +28,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '.vercel.app',
-    'http://127.0.0.1:8001',
-    'http://localhost:8080'
+    ".now.sh",
+    '127.0.0.1',
+    'localhost',
 ]
 
 
@@ -54,7 +55,8 @@ INSTALLED_APPS = [
     'MyAuth.apps.MyauthConfig',
     'UserExtends.apps.UserextendsConfig',
     'GraphQL.apps.GraphqlConfig',
-    'chat.apps.ChatConfig'
+    'chat.apps.ChatConfig',
+    "Test.apps.TestConfig",
 
 ]
 # Application definition
@@ -99,11 +101,18 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'neondb',
+    'USER': 'Shkolenko02-03-2004',
+    'PASSWORD': 'QnzROJVur89D',
+    'HOST': 'ep-red-wave-605810.eu-central-1.aws.neon.tech',
+    'PORT': '5432',
+    'OPTIONS': {'sslmode': 'require'},
+  },
 }
+
+
 
 
 # Password validation
@@ -149,13 +158,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #Auth
 
-# CORS_ORIGIN_ALLOW_ALL = True
+
 
 CORS_ALLOW_HEADERS = "*"
 CORS_ORIGIN_WHITELIST = [
     'http://127.0.0.1:8001',
     'http://localhost:8080',
-    '.vercel.app',
 ]
 
 
@@ -191,3 +199,7 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+#Deploy
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
