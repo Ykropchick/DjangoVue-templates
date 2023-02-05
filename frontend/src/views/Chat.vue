@@ -38,7 +38,7 @@ export default {
   },
   async mounted() {
     await this.takeMessageHistory()
-    this.connectWebSocket(`ws://127.0.0.1:8001/ws/chat/${this.room_name}/`)
+    this.connectWebSocket(`ws://backend-beta-ruddy.vercel.app/ws/chat/${this.room_name}/`)
   },
   methods:{
     sendMessage(){
